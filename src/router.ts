@@ -13,6 +13,8 @@ import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
 import { cancelOrderById } from "./app/useCases/orders/cancelOrderById";
 import { deleteProductById } from "./app/useCases/products/deleteProductById";
 import { deleteCategoryById } from "./app/useCases/categories/deleteCategoryById";
+import { createUser } from "./app/useCases/users/createUser";
+import { loginUser } from "./app/useCases/users/loginUser";
 
 export const router = Router();
 
@@ -26,6 +28,12 @@ const upload = multer({
     },
   }),
 });
+
+// Register
+router.post("/register", createUser);
+
+// Login
+router.post("/login", loginUser);
 
 // List categories
 router.get("/categories", listCategories);

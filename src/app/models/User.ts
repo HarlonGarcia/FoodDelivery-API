@@ -3,7 +3,19 @@ import { model, Schema } from "mongoose";
 export const User = model(
   "User",
   new Schema({
+    token: {
+      type: String,
+      required: false,
+    },
     name: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    password: {
       type: String,
       required: true,
     },
@@ -22,7 +34,7 @@ export const User = model(
       {
         order: {
           type: Schema.Types.ObjectId,
-          required: true,
+          required: false,
           ref: "Order",
         },
       },
