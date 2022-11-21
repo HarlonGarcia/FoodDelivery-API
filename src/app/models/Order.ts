@@ -3,24 +3,34 @@ import { model, Schema } from "mongoose";
 export const Order = model(
   "Order",
   new Schema({
-    address: {
-      type: [
-        {
-          street: String,
-          number: String,
-          reference: String,
+    user: {
+      name: {
+        type: String,
+        required: true,
+      },
+      address: {
+        street: {
+          type: String,
+          required: true,
         },
-      ],
-      required: false,
+        number: {
+          type: String,
+          required: true,
+        },
+        reference: {
+          type: String,
+          required: false,
+        },
+      },
     },
     status: {
       type: String,
-      enum: ["WAITING", "DONE"],
+      enum: ["WAITING", "IN_PRODUCTION", "DONE"],
       default: "WAITING",
     },
     createdAt: {
       type: Date,
-      default: Date.now,
+      default: new Date(),
     },
     products: {
       type: [
