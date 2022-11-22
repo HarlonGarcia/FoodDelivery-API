@@ -2,6 +2,7 @@ import path from "node:path";
 import { Router } from "express";
 import multer from "multer";
 
+import { verifyToken as auth } from "./app/middleware/auth";
 import { createCategory } from "./app/useCases/categories/createCategory";
 import { listCategories } from "./app/useCases/categories/listCategories";
 import { createProduct } from "./app/useCases/products/createProduct";
@@ -27,6 +28,10 @@ const upload = multer({
       callback(null, `${Date.now()}-${file.originalname}`);
     },
   }),
+});
+
+router.post("/welcome", auth, (req, res) => {
+  res.status(200).send("Welcome 🙌 ");
 });
 
 // Register
@@ -60,7 +65,7 @@ router.delete("/products/:productId", deleteProductById);
 router.get("/orders", listOrders);
 
 // Create order
-router.post("/orders", createOrder);
+router.post("/orders", auth, createOrder);
 
 // Change order status
 router.patch("/orders/:orderId", changeOrderStatus);
