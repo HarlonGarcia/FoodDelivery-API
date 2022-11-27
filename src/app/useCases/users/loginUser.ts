@@ -2,6 +2,7 @@ import { User } from "./../../models/User";
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { jwt_random_key } from "../../../utils/constants";
 
 export async function loginUser(req: Request, res: Response) {
   try {
@@ -12,16 +13,12 @@ export async function loginUser(req: Request, res: Response) {
     }
 
     const newPhone = phone.replace(/[^+\d]+/g, "");
-    const user = await User.findOne({ newPhone });
+    const user = await User.findOne({ phone: newPhone });
 
     if (user && (await bcrypt.compare(password, user.password))) {
-      const token = jwt.sign(
-        { user_id: user._id, newPhone },
-        "fooddeliveryapi",
-        {
-          expiresIn: "2h",
-        }
-      );
+      const token = jwt.sign({ user_id: user._id, newPhone }, jwt_random_key, {
+        expiresIn: "2h",
+      });
 
       user.token = token;
 

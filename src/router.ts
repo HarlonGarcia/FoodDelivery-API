@@ -16,6 +16,9 @@ import { deleteProductById } from "./app/useCases/products/deleteProductById";
 import { deleteCategoryById } from "./app/useCases/categories/deleteCategoryById";
 import { createUser } from "./app/useCases/users/createUser";
 import { loginUser } from "./app/useCases/users/loginUser";
+import { listUsers } from "./app/useCases/users/listUsers";
+import { findUserByPhone } from "./app/useCases/users/findUserByPhone";
+import { deleteUserById } from "./app/useCases/users/deleteUserById";
 
 export const router = Router();
 
@@ -40,13 +43,22 @@ router.post("/register", createUser);
 // Login
 router.post("/login", loginUser);
 
+// List users
+router.get("/users", listUsers);
+
+// Find user by phone
+router.get("/users/:phone", findUserByPhone);
+
+// Delete user by id
+router.get("/users/:userId", deleteUserById);
+
 // List categories
 router.get("/categories", listCategories);
 
 // Create category
 router.post("/categories", createCategory);
 
-//Delete category
+// Delete category
 router.delete("/categories/:categoryId", deleteCategoryById);
 
 // List products

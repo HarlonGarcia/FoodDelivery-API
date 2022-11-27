@@ -1,3 +1,4 @@
+import { jwt_random_key } from "./../../utils/constants";
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
@@ -10,7 +11,7 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
   }
 
   try {
-    const decoded = jwt.verify(token, "fooddeliveryapi");
+    const decoded = jwt.verify(token, jwt_random_key);
     req.user = decoded;
   } catch (error) {
     console.log(error);

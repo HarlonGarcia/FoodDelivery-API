@@ -2,6 +2,7 @@ import { User } from "./../../models/User";
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { jwt_random_key } from "../../../utils/constants";
 
 export async function createUser(req: Request, res: Response) {
   try {
@@ -11,9 +12,10 @@ export async function createUser(req: Request, res: Response) {
       res.status(400).send("All input is required");
     }
 
-    const newPhone = phone.replace(/[^+\d]+/g, "");
+    const newPhone = phone.replace(/[^+\d]+/g, "") || phone;
 
-    const oldUser = await User.findOne({ newPhone });
+    const oldUser = await User.findOne({ phone: newPhone });
+    console.log(oldUser);
 
     if (oldUser) {
       return res.status(409).send("User Already Exist. Please Login");
@@ -28,7 +30,7 @@ export async function createUser(req: Request, res: Response) {
       password: encryptedPassword,
     });
 
-    const token = jwt.sign({ user_id: user._id, phone }, "fooddeliveryapi", {
+    const token = jwt.sign({ user_id: user._id, phone }, jwt_random_key, {
       expiresIn: "2h",
     });
 
