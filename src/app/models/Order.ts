@@ -4,6 +4,10 @@ export const Order = model(
   "Order",
   new Schema({
     user: {
+      _id: {
+        type: String,
+        required: true,
+      },
       name: {
         type: String,
         required: true,

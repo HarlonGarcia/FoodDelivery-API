@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Order } from "../../models/Order";
 import { io } from "../../../index";
+import { User } from "../../models/User";
 
 export async function createOrder(req: Request, res: Response) {
   try {
@@ -10,6 +11,19 @@ export async function createOrder(req: Request, res: Response) {
       user,
       products,
     });
+
+    const userFound = await User.findById(user._id);
+
+    if (userFound) {
+      const userOrders = [
+        ...userFound.orders,
+        {
+          order: order._id,
+        },
+      ];
+
+      await User.findByIdAndUpdate(userFound._id, { orders: userOrders });
+    }
 
     const orderDetails = await order.populate("products.product");
 
