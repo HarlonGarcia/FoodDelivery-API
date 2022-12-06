@@ -12,6 +12,10 @@ export const Order = model(
         type: String,
         required: true,
       },
+      phone: {
+        type: String,
+        required: true,
+      },
       address: {
         street: {
           type: String,
