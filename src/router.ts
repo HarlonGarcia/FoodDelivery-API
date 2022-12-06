@@ -3,22 +3,22 @@ import { Router } from "express";
 import multer from "multer";
 
 import { verifyToken as auth } from "./app/middleware/auth";
-import { createCategory } from "./app/useCases/categories/createCategory";
-import { listCategories } from "./app/useCases/categories/listCategories";
-import { createProduct } from "./app/useCases/products/createProduct";
-import { listProducts } from "./app/useCases/products/listProducts";
-import { listProductsByCategory } from "./app/useCases/categories/listProductsByCategory";
-import { listOrders } from "./app/useCases/orders/listOrders";
-import { createOrder } from "./app/useCases/orders/createOrder";
-import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
-import { cancelOrderById } from "./app/useCases/orders/cancelOrderById";
-import { deleteProductById } from "./app/useCases/products/deleteProductById";
-import { deleteCategoryById } from "./app/useCases/categories/deleteCategoryById";
-import { createUser } from "./app/useCases/users/createUser";
-import { loginUser } from "./app/useCases/users/loginUser";
-import { listUsers } from "./app/useCases/users/listUsers";
-import { findUserByPhone } from "./app/useCases/users/findUserByPhone";
-import { deleteUserById } from "./app/useCases/users/deleteUserById";
+import { createCategory } from "@usecases/categories/createCategory";
+import { listCategories } from "@usecases/categories/listCategories";
+import { createProduct } from "@usecases/products/createProduct";
+import { listProducts } from "@usecases/products/listProducts";
+import { listProductsByCategory } from "@usecases/categories/listProductsByCategory";
+import { listOrders } from "@usecases/orders/listOrders";
+import { createOrder } from "@usecases/orders/createOrder";
+import { changeOrderStatus } from "@usecases/orders/changeOrderStatus";
+import { cancelOrderById } from "@usecases/orders/cancelOrderById";
+import { deleteProductById } from "@usecases/products/deleteProductById";
+import { deleteCategoryById } from "@usecases/categories/deleteCategoryById";
+import { createUser } from "@usecases/users/createUser";
+import { loginUser } from "@usecases/users/loginUser";
+import { listUsers } from "@usecases/users/listUsers";
+import { findUserByPhone } from "@usecases/users/findUserByPhone";
+import { deleteUserById } from "@usecases/users/deleteUserById";
 
 export const router = Router();
 

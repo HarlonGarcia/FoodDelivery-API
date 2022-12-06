@@ -4,6 +4,7 @@ import path from "node:path";
 import http from "node:http";
 import { Server } from "socket.io";
 import { router } from "./router";
+import "module-alias/register";
 
 const db_url = "mongodb://0.0.0.0:27017";
 const app = express();
@@ -13,7 +14,7 @@ export const io = new Server(server);
 mongoose
   .connect(db_url)
   .then(() => {
-    const port = 3001;
+    const port = import.meta.env.VITE_PORT || 3001;
 
     app.use((req, res, next) => {
       res.setHeader("Access-Control-Allow-Origin", "*");
