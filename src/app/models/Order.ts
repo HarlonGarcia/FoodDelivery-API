@@ -34,7 +34,7 @@ export const Order = model(
     },
     createdAt: {
       type: Date,
-      default: new Date(),
+      default: () => new Date(),
     },
     products: {
       type: [
