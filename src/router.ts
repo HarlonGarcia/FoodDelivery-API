@@ -2,6 +2,8 @@ import path from "node:path";
 import { Router } from "express";
 import multer from "multer";
 
+// rm -rf node_modules
+
 import { verifyToken as auth } from "./app/middleware/auth";
 import { createCategory } from "./app/useCases/categories/createCategory";
 import { listCategories } from "./app/useCases/categories/listCategories";
@@ -31,10 +33,6 @@ const upload = multer({
       callback(null, `${Date.now()}-${file.originalname}`);
     },
   }),
-});
-
-router.post("/welcome", auth, (req, res) => {
-  res.status(200).send("Welcome 🙌 ");
 });
 
 // Register
