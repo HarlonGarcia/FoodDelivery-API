@@ -1,7 +1,7 @@
 declare global {
   namespace Express {
     interface Request {
-      user?: Record<User | any>;
+      user?: Record<User>;
     }
   }
 }

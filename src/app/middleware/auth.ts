@@ -12,7 +12,7 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
 
   try {
     const decoded = jwt.verify(token, jwt_random_key);
-    req.user = decoded;
+    (<any>req).user = decoded;
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
