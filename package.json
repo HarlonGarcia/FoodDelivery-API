@@ -31,5 +31,6 @@
   },
   "_moduleAliases": {
     "@usecases": "dist/app/useCases"
-  }
+  },
+  "type": "module"
 }

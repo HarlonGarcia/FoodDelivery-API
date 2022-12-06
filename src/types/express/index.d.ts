@@ -9,9 +9,8 @@ declare global {
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_APP_TITLE: string;
-  VITE_NODE_ENV: "development" | "production";
-  VITE_PORT: string;
+  NODE_ENV: "development" | "production";
+  PORT: string;
 }
 
 interface ImportMeta {
