@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "start": "node src/index.js"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -31,6 +32,5 @@
   },
   "_moduleAliases": {
     "@usecases": "dist/app/useCases"
-  },
-  "type": "module"
+  }
 }
