@@ -30,8 +30,5 @@
     "multer": "^1.4.5-lts.1",
     "path": "^0.12.7",
     "socket.io": "^4.5.3"
-  },
-  "_moduleAliases": {
-    "@usecases": "dist/app/useCases"
   }
 }
